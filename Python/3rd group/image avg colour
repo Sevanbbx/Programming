@@ -1,0 +1,26 @@
+from PIL import Image
+ 
+im = Image.open("image.jpg")
+pixels = im.load()
+x, y = im.size
+sumR = 0
+sumG = 0
+sumB = 0
+ 
+for i in range(x):  
+    for j in range(y):
+        r, g, b = pixels[i, j]
+        sumR += r
+        sumG += g
+        sumB += b
+
+avgR = (sumR)//(x*y)
+avgG= (sumG)//(x*y)
+avgB = (sumB)//(x*y)
+print(avgR, avgG, avgB)
+
+for i in range(x):  
+    for j in range(y):
+        pixels[i, j] = (avgR, avgG, avgB)
+
+im.save("new.jpeg")

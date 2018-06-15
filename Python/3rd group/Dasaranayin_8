@@ -1,0 +1,8 @@
+class AAA:  
+    room = 25
+    pc = 14    
+    def aaa(self):        
+        print(self.room*self.pc)
+
+bbb=AAA()
+bbb.aaa()

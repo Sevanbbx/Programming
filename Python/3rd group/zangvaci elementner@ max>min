@@ -1,0 +1,10 @@
+n = int(input('Input variable value:'))
+a = []
+for i in range(n):
+    i = int(input())
+    a.append(i)
+for i in range(len(a)-1):
+    for j in range(len(a)-1):
+        if a[j] > a[j+1]:
+            a[j],a[j+1] = a[j+1],a[j]
+print(a)

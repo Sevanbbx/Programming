@@ -1,0 +1,145 @@
+kturtle-script-v1.0
+@(reset)
+@(clear)
+@(canvassize) 1100@(,) 1100
+@(dir) 0
+@(go) 25@(,) 25
+$name = @(ask) "What is your name?"
+@(print)("Player ")
+@(gox) 75
+@(print)($name)
+@(go) 125@(,) 40
+@(pencolor) 255@(,) 0@(,) 255
+@(pw) 5
+@(dir) 90
+@(fw) 30
+@(dir) 0
+@(pencolor) 0@(,) 0@(,) 0
+@(go) 25@(,) 45
+@(print)("Bot ")
+@(dir) 90
+@(go) 70@(,) 60
+@(pencolor) 0@(,) 255@(,) 0
+@(fw) 30
+@(dir) 0
+@(pencolor) 0@(,) 0@(,) 0
+@(go) 150@(,) 800
+@(print)("1. (x+1,y+3)")
+@(goy) 850
+@(print)("2. (x+2,y+2)")
+@(goy) 900
+@(print)("3. (x+3,y)")
+@(learn) X_start $x{
+@(return) $x*20+500
+}
+@(learn) Y_start $y{
+  @(return) 500-$y*20
+}
+@(learn) X_convert $x{
+  @(return) $x*20
+}
+
+@(learn) Y_convert $y{
+  @(return) $y*20
+}
+@(learn) func_1 $x@(,) $y@(,) $color{
+  @(if) ($color == 1) {@(pencolor) 0@(,) 255@(,) 0}
+  @(else) {@(pencolor) 255@(,) 0@(,) 255}
+  @(go) $x@(,) $y
+  @(dir) 0 
+  @(for) $i = 0 @(to) 1{
+    @(gox) $x+X_convert $i
+    @(goy) $y-3*Y_convert $i
+    @(pd)
+    @(fw) 1
+    $i = $i-0.99
+    }
+}
+@(learn) func_2 $x@(,) $y@(,) $color{
+  @(if) ($color == 1) {@(pencolor) 0@(,) 255@(,) 0}
+  @(else) {@(pencolor) 255@(,) 0@(,) 255}
+  @(go) $x@(,) $y
+  @(dir) 0
+  @(for) $i = 0 @(to) 1{
+    @(gox) $x+2*X_convert $i
+    @(goy) $y-2*Y_convert $i
+    @(pd)
+    @(fw) 1
+    $i = $i-0.99
+    }
+}
+@(learn) func_3 $x@(,) $y@(,) $color{
+  @(if) ($color == 1) {@(pencolor) 0@(,) 255@(,) 0}
+  @(if) ($color == 0) {@(pencolor) 255@(,) 0@(,) 255}
+  @(go) $x@(,) $y
+  @(dir) 0
+  @(for) $i = 0 @(to) 1{
+    @(gox) $x+3*X_convert $i
+    @(goy) $y-Y_convert $i
+    @(pd)
+    @(fw) 1
+    $i = $i-0.99
+    }
+}
+@(learn) choose $var{
+  @(if) ($var == 1){func_1 @(getx)@(,) @(gety)@(,) 0}
+  @(if) ($var == 2){func_2 @(getx)@(,) @(gety)@(,) 0}
+  @(if) ($var == 3){func_3 @(getx)@(,) @(gety)@(,) 0}
+}
+@(go) 500@(,) 1000
+@(pw) 3
+@(dir) 0
+@(pd)
+$k = -25
+$x = 0
+@(while)($x<10){
+  @(print)($k)
+  $k= $k + 5
+  $x = $x+1
+  @(fw) 100
+} 
+@(print)($k)
+
+
+@(dir) 90
+@(go) 25@(,) 500
+$k = -25
+$x = 0
+@(while)($x<10){
+  @(print)($k)
+  $k= $k + 5
+  $x = $x+1
+  @(fw) 100
+} 
+@(print)($k)
+$x = @(ask) "Enter X"
+$y = @(ask) "Enter Y"
+@(if) (($x > 25 @(or) $x < -25) @(or) ($y > 25 @(or) $y < -25)){@(print)("WRONG NMBERS!")}
+@(else){
+$a_start = X_start $x
+$b_start =  Y_start $y
+$sahman_y = $b_start - 200
+@(go) 0@(,) $sahman_y
+@(pd)
+@(fw) $a_start + 200
+@(tr) 90
+@(dir) 180
+@(fw) 500
+@(go) $a_start@(,) $b_start
+$m = 1
+$bul = @(false)
+@(while) (@(getx) - $a_start < 200 @(and) $b_start - @(gety) < 200){
+@(if) ($m == 1) {@(wait) 1 func_2 @(getx)@(,) @(gety)@(,) 1}
+$m = 5
+$var = @(ask) "choose 1, 2 or 3"
+choose $var
+$bul  = @(false)
+@(if) (@(getx) - $a_start < 200 @(and) $b_start - @(gety) < 200){
+@(if) ($var==1) {@(wait) 1func_3 @(getx)@(,) @(gety)@(,) 1}
+@(if) ($var==2) {@(wait) 1 func_2 @(getx)@(,) @(gety)@(,) 1}
+@(if) ($var == 3) {@(wait) 1 func_1 @(getx)@(,) @(gety)@(,) 1}
+$bul = @(true)
+}}
+@(pencolor) 0@(,) 0@(,) 0
+@(if) ($bul == @(false)) {@(print)("YOU WON!")}
+@(else) {@(print)("YOU LOST!")}}}

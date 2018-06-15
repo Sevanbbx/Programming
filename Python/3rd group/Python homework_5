@@ -1,0 +1,10 @@
+team1 = input('Ներմուծեք առաջին թիմի անունը և նրա խփած քոլերի քանակը\n').format()
+team2 = input('Ներմուծեք երկրորդ թիմի անունը և նրա խփած քոլերի քանակը\n').format()
+if int(team1[-1]) > int(team2[-1]):
+    print('Հաղթել է', team1[:-1] + 'թիմը')
+elif int(team1[-1]) < int(team2[-1]):
+    print('Հաղթել է', team2[:-1] + 'թիմը')
+elif int(team1[-1]) == int(team2[-1]):
+    print('Գրանցվել է ոչ ոքի')
+    print(team1[:-1])
+    print(team2[:-1])

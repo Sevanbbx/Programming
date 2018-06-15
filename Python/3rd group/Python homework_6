@@ -1,0 +1,41 @@
+#Days of the week
+days_of_week = {'1':'Monday', '2':'Tuesday', '3':'Wednesday', '4':'Thursday', '5':'Friday', '6':'Saturday', '7':'Sunday'}
+day_number = input('Ներմուծեք շաբաթվա օրերին համապատասխան մի թիվ[1-7]\n')
+inputs = ['1', '2', '3', '4', '5', '6', '7']
+if day_number not in inputs:
+    print('Ներմուծվել է սխալ տող')
+else:
+    print(days_of_week[day_number])
+
+#3 arrays
+array_max = []
+n1 = int(input('Input number of elements(1st array)\n'))
+array1 = []
+for i in range(n1):
+    i = int(input())
+    array1.append(i)
+for i in range(len(array1)-1):
+    for j in range(len(array1)-1):
+        if array1[j] > array1[j+1]:
+            array1[j],array1[j+1] = array1[j+1],array1[j]
+array_max.append(array1[-1])
+array_max.append(array1[-2])
+
+n2 = int(input('Input number of elements(2nd array)\n'))
+array2 = []
+for i in range(n2):
+    i = int(input())
+    array2.append(i)
+for i in range(len(array2)-1):
+    for j in range(len(array2)-1):
+        if array2[j] > array2[j+1]:
+            array2[j],array2[j+1] = array2[j+1],array2[j]
+array_max.append(array2[-1],)
+array_max.append(array2[-2],)
+for i in range(len(array_max)-1):
+    for j in range(len(array_max)-1):
+        if array_max[j] > array_max[j+1]:
+            array_max[j],array_max[j+1] = array_max[j+1],array_max[j]
+print(array1)
+print(array2)
+print(array_max)

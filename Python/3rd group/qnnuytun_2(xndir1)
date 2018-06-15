@@ -1,0 +1,15 @@
+array = []
+array1 = []
+p = 1
+n = int(input())
+for i in range(n):
+    a = int(input())
+    array.append(a)
+print(array)
+for i in array:
+    if (i * array.index(i))%3 == 2:
+        q = i*i
+        array1.append(q)
+for i in array1:
+    p *= i
+print(p)

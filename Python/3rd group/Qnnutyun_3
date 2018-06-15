@@ -1,0 +1,7 @@
+n = int(input('n = '))
+for i in range(n):
+    if i*i <= n:
+        continue
+    else:
+        print(i-1)
+        break

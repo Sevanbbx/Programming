@@ -1,0 +1,22 @@
+n = int(input('Input the number of elements\n'))
+a = []
+z = 0
+column = []
+minimum = []
+for i in range(n):
+    a.append([])
+    for j in range(n):
+        j = int(input())
+        a[i].append(j)
+print('The matrix is')
+for i in a:
+    print(i)
+for i in range(n):
+    for i in a:
+        column.append(i[z])
+    sorted_column = sorted(column)
+    minimum.append(sorted_column[0])
+    z+=1
+    del column[:]
+print('Minimum array is')
+print(sorted(minimum))

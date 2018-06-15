@@ -1,0 +1,17 @@
+kturtle-script-v1.0
+@(clear)
+@(canvassize) 1000@(,) 1000
+@(dir) 180
+@(go) 100@(,) 400
+@(pw) 3
+@(pd)
+@(for) $i = 3 @(to) 11
+{
+  @(repeat) $i
+  {
+    @(fw) 250
+    @(tl) 360/$i
+    
+  }
+
+}

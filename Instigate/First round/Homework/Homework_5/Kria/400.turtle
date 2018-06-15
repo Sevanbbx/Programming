@@ -1,0 +1,54 @@
+kturtle-script-v1.0
+@(reset)
+@(canvassize) 1300@(,) 800
+@(learn) cub $x@(,) $y {
+  @(go) $x@(,) $y
+  @(dir) 0
+  @(pencolor) 255@(,) 210@(,) 0
+  @(pw) 15
+  @(repeat) 6 {
+  @(fw) 40
+  @(tl) 60
+  }
+  @(pw) 62
+  @(go) $x-35@(,) $y-19
+  @(fw) 1
+  @(pw) 5
+  @(pencolor) 255@(,) 250@(,) 250
+  @(go) $x-35@(,) $y+25
+  @(fw) 50
+  @(tr) 120
+  @(bw) 50
+  @(fw) 50
+  @(tl) 60
+  @(fw) 50
+}
+@(learn) cub_4 $x@(,) $y{
+  @(dir) 0
+  @(for) $i = 1 @(to) 3{
+    cub $x@(,) $y+110*$i
+    }
+    cub $x+110@(,) $y+330
+  $x = $x + 220
+  @(for) $i = 1 @(to) 5{
+    cub $x@(,) $y+110*$i
+    }
+}
+@(learn) cub_0 $x@(,) $y{
+  @(dir) 0
+  @(for) $i = 1 @(to) 2{
+    cub $x+110*$i@(,) $y
+    } 
+  @(for) $i = 1 @(to) 3{
+    cub $x+30@(,) $y+110*$i
+    } 
+  @(for) $i = 1 @(to) 2{
+    cub $x+110*$i@(,) $y+440
+    } 
+  @(for) $i = 1 @(to) 3{
+    cub $x+300@(,) $y+110*$i
+    } 
+}
+cub_4 100@(,) 100
+cub_0 500@(,) 200
+cub_0 950@(,) 200

@@ -1,0 +1,13 @@
+kturtle-script-v1.0
+@(clear)
+@(go) 300@(,) 500
+@(canvassize) 1000@(,) 1000
+@(pw) 3
+$n = @(ask) "Enter a number"
+@(dir) 90
+@(pd)
+@(repeat) $n
+{
+  @(fw) 500/$n
+  @(tl) 360/$n
+}

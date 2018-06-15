@@ -1,0 +1,13 @@
+kturtle-script-v1.0
+@(clear)
+@(canvassize) 1000@(,) 1000
+@(go) 250@(,) 500
+@(pw) 3
+@(dir) 45
+@(pd) 
+@(for) $x = 1 @(to) 430 { 
+  @(if) ($x>0 @(and) $x<180 @(or) $x>210@(and)  $x<396 @(or) $x>420){
+  @(fw) 3
+  @(tr) 0.5}
+  @(if)($x>180 @(and) $x<210 @(or) $x>396) {@(fw) 2 @(tr) 3}
+}

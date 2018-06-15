@@ -1,0 +1,7 @@
+name = input()
+surname = input()
+animal = input()
+zodiac = input()
+print('Individual horoscope for', name, surname)
+print('In your previous life you were: ', animal)
+print('Your zodiac sign is', zodiac + ', which indicates a very sensitive soul.')

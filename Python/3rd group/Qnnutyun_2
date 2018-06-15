@@ -1,0 +1,12 @@
+n = int(input('n = '))
+b = n
+if n % 2 == 0:
+    while b >= 2:
+        n *= b
+        b -= 2
+    print(n)
+else:
+    while b >= 1:
+        n *= b
+        b -= 2
+    print(n)

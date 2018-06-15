@@ -1,0 +1,45 @@
+#Erkchap zangvacneri kent arjeqneri mijin tvabanakany (im tarberaky)
+n = int(input('Input the number of elements\n'))
+a = []
+odd = []
+sum1 = 0
+for i in range(n):
+    a.append([])
+    for j in range(n):
+        j = int(input())
+        a[i].append(j)
+print(a)
+for i in a:
+    for j in i:
+        if j % 2 == 1:
+            odd.append(j)
+
+for i in odd:
+    sum1 += i
+    print('s=', sum1)
+ar_average = sum1 / len(odd)
+print(sum1)
+print(ar_average)
+
+
+
+
+
+
+
+#Erkchap zangvacneri kent arjeqneri mijin tvabanakany 
+n = int(input('Input the number of elements\n'))
+a = []
+s = 0
+qanak = 0
+for i in range(n):
+    a.append([])
+    for j in range(n):
+        j = int(input())
+        a[i].append(j)
+for i in range(n):
+    for j in range(n):
+        if a[i][j] % 2 == 1:
+            s += a[i][j]
+            qanak += 1
+print(s//qanak)

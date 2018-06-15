@@ -1,0 +1,58 @@
+kturtle-script-v1.0
+@(reset)
+@(learn) ball $x@(,) $y@(,) $size{
+  @(go) $x@(,) $y
+  @(repeat) 360 / $size
+  {
+    @(fw) 1.7
+    @(tr) 1 * $size
+  }
+}
+$y = 350
+$bul = @(true)
+@(learn) game $N{
+@(if) ($N > 10) {$j_goal=$N/10}
+@(else) {$j_goal = 1}
+  @(for) $i = 0 @(to) $N-1{
+$i = 0}
+    @(if) ($bul == @(true)) {$a=0 $b=0 $y=$y-23 $bul = @(false)
+    @(if) ($N == 10) {$a=0 $b=0}
+    @(if) ($N == 9) {$a=4 $b=2}
+    @(if) ($N == 8) {$a=6 $b=4}
+    @(if) ($N == 7) {$a=8 $b=9}
+    @(if) ($N == 6) {$a=10 $b=13}
+    @(if) ($N == 5) {$a=12 $b=20}
+    @(if) ($N == 4) {$a=16 $b=30}
+    @(if) ($N == 3) {$a=24 $b=46}
+    @(if) ($N == 2) {$a=40 $b=80}
+    @(if) ($N == 1) {$a=90 $b=0}
+#		if ()
+    @(if) ($bul==@(false)){
+    ball 110+$a+(20+$b)*$i@(,) $y@(,) $size}
+    @(if) ($bul==@(true)) {
+    ball 110+20*$i@(,) $y@(,) $size}
+}
+$bul = @(true)
+}
+
+
+$N = @(ask) "Enter a number"
+@(if) ($N > 90) {@(print)("Wrong number!")}
+@(else) {
+@(if) ($N>=10) {$size = 10}
+@(else) {$size = $N}
+@(go) 100@(,) 150
+@(dir) 180
+@(pw) 4
+@(pd)
+@(repeat) 3{
+  @(fw) 200
+  @(tl) 90}
+
+@(while) ($N>0){
+@(if) ($N > 10){
+game 10
+$N = $N-10}
+@(else) {game $N
+$N=0}
+}}

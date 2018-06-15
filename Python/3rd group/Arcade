@@ -1,0 +1,44 @@
+#Nareki kotlet
+
+import arcade
+arcade.open_window(1250, 1001, "Drawing Example")
+arcade.set_background_color(arcade.color.BLACK)
+arcade.start_render()
+for x in range(0, 1401, 250):
+    arcade.draw_line(x, 0, x, 1200, arcade.color.CYAN, 2)
+for y in range(0, 1001, 200):
+    arcade.draw_line(0, y, 1400, y, arcade.color.CYAN, 2)
+texture = arcade.load_texture("Nareki_kotlet.png")
+scale = .6
+for x in range(25, 1150, 250):
+    for y in range(1100, 0, -200):
+        arcade.draw_text("Նարեկի կոտլետ", x, y, arcade.color.WHITE, 20)
+        arcade.draw_texture_rectangle(x + 75, y - 40, scale * texture.width, 
+                                      scale * texture.height, texture, 0)
+        arcade.draw_texture_rectangle(x + 75, y - 40, scale * texture.width,
+                                      scale * texture.height, texture, 45)
+arcade.finish_render()
+arcade.run()
+
+
+#X&0
+
+import arcade
+class verical_lines:
+    def __init__(self, x, y, length, color):
+        self.x = x
+        self.y = y
+        self.length = length
+        self.color = color
+        
+    def draw(self):
+        #for x in range(0, 601, 120):
+        arcade.draw_line(self.x, self.length, self.color)
+        #for y in range(0, 601, 120):
+        arcade.draw_line(self.y, self.length, self.color)
+        
+class MyApplication(arcade.Window):
+    def __init__(self, width, height):
+        super().__init__(width, height, title="Keyboard control")
+        self.player = None
+        self.left_down = False    

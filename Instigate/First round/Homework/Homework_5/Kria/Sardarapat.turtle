@@ -1,0 +1,94 @@
+kturtle-script-v1.0
+@(reset)
+@(canvassize) 1100@(,) 1400
+@(pencolor) 155@(,) 86@(,) 0
+@(learn) kamar $x@(,) $y {
+  @(pw) 35
+  @(go) $x@(,) $y
+  @(dir) 0
+  @(repeat) 180{
+    @(fw) 1.75
+    @(tr) 1 }
+}
+@(learn) bell $x@(,) $y{
+  @(dir) 90
+  @(go) $x@(,) $y
+  @(pw) 2
+  @(fw) 15
+  @(tl) 120
+  @(fw) 1
+  @(repeat) 25{
+    @(fw) 0.5
+    @(tr) 1}
+  @(repeat) 68{
+    @(fw) 0.15
+    @(tl) 2.5}
+  @(repeat) 25{
+    @(fw) 0.525
+    @(tr) 1}
+  @(dir) 180
+}
+@(learn) line $x@(,) $y{
+  @(go) $x@(,) $y
+  @(dir) 90
+  @(pw) 1
+  @(fw) 600
+}
+@(learn) bells $x@(,) $y{
+  @(dir) 180
+  $bul = @(true)
+  @(for) $i = 0 @(to) 2{
+    @(go) $x+$i*25@(,) $y
+    @(if) ($bul == @(true)){
+      @(fw) 50
+      $bul = @(false)
+      bell $x-7+$i*25@(,) $y+64
+    }
+    @(else) @(if) ($bul == @(false)){
+      @(fw)   25
+      $bul = @(true)
+      bell $x-7+$i*25@(,) $y+40}}}
+
+@(dir) 0
+@(pw)  35
+@(pd)
+@(for) $i = 1 @(to) 4{
+@(go) 200*$i@(,) 1400
+@(if) ($i == 2 @(or) $i == 3){@(fw) 1325}
+@(else) {@(fw) 1250}
+}
+@(go) 290@(,) 270
+@(dir) 90
+@(pw) 170
+@(fw) 420
+@(for) $i = 0 @(to) 2{
+  kamar 200+$i*200@(,) 440
+}
+@(go) 265@(,) 602
+@(dir) 90
+@(pw) 100
+@(fw) 500
+@(for) $i = 0 @(to) 2{
+  kamar 200+$i*200@(,) 740
+}
+@(go) 265@(,) 952
+@(dir) 90
+@(pw) 100
+@(fw) 500
+@(for) $i = 0 @(to) 2{
+  kamar 200+$i*200@(,) 1090
+}
+#tl 12
+#fw 305
+line 200@(,) 440
+bells 275@(,) 440
+bells 475@(,) 440
+bells 675@(,) 440
+line 200@(,) 740
+@(for) $i = 0 @(to) 2{
+  @(go) 300+$i*200@(,) 740
+  @(dir) 180
+  @(fw) 25
+  bell 293+$i*200@(,) 780
+}
+@(go) 0@(,) 0

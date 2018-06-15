@@ -1,0 +1,21 @@
+num1 = input('Ներմուծեք 3 թիվ \n')
+num2 = input()
+num3 = input()
+if num1 > num2 and num1 > num3:
+    print(num1+'-ը ամենամեծն է')
+    if num2 > num3:
+        print(num2+'-ը Երկրորդ ամենամեծն է')
+    else:
+        print(num3+'-ը Երկրորդ ամենամեծն է')
+if num2 > num1 and num2 > num3:
+    print(num2+'-ը ամենամեծն է')
+    if num1 > num3:
+        print(num1+'-ը Երկրորդ ամենամեծն է')
+    else:
+        print(num3+'-ը Երկրորդ ամենամեծն է')    
+if num3 > num1 and num3 > num2:
+    print(num3+'-ը ամենամեծն է')
+    if num1 > num2:
+        print(num1+'-ը Երկրորդ ամենամեծն է')
+    else:
+        print(num2+'-ը Երկրորդ ամենամեծն է')    
