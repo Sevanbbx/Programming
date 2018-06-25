@@ -1,6 +1,9 @@
 #include <iostream>
 
 int numDevisors(int numOfSquares){
+    if(numOfSquares == 1){
+        return 4;
+    }
     int devisors[numOfSquares/4];
     int j = 0;
     for(int i = 1; i < numOfSquares / 2 + 1; ++i){
