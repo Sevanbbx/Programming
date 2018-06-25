@@ -4,7 +4,7 @@ int numDevisors(int numOfSquares){
     if(numOfSquares == 1){
         return 4;
     }
-    int devisors[numOfSquares/4];
+    int * devisors = new int[numOfSquares/4];
     int j = 0;
     for(int i = 1; i < numOfSquares / 2 + 1; ++i){
         if(numOfSquares % i == 0){
@@ -18,6 +18,7 @@ int numDevisors(int numOfSquares){
             min = devisors[i];
         }
     }
+    delete devisors;
     return min;
 }
 
