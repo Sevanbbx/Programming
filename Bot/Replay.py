@@ -1,6 +1,7 @@
 import time
 import discord
 import random
+import os
             
 client = discord.Client()
 
@@ -82,4 +83,5 @@ async def on_ready():
     print(client.user.id)
     print('------')
 
-client.run('NDc3MTE5NzIxNzYyNzE3NzA2.Dk359w.Lan62rnWf-vHpCz8rc0-822UiSM')
+client.run(os.getenv('TOKEN'))
+#client.run('NDc3MTE5NzIxNzYyNzE3NzA2.Dk359w.Lan62rnWf-vHpCz8rc0-822UiSM')
