@@ -1,0 +1,73 @@
+#include <iostream>
+
+int createNthNumber(int groupNum, int auxNum, int op){
+    int a[32] = {0};
+    int num = 0; 
+    int lenF = 0;
+    int i = 0;
+    if(op == 2){
+        lenF = 2 * groupNum;
+        a[lenF-1] = a[0] = 1;
+        while(auxNum){
+            a[groupNum+1] = a[groupNum-1-i] = auxNum & 1;
+            auxNum = auxNum >> 1;
+            ++i;
+        }
+    } else if(op == 0){
+        lenF = 2 * groupNum + 1;
+        a[lenF-1] = a[0] = 1;
+        a[groupNum] = 0;
+        while(auxNum){
+            a[groupNum+1+i] = a[groupNum-1-i] = auxNum & 1;
+            auxNum = auxNum >> 1;
+            ++i;
+        }
+    } else{
+        lenF = 2 * groupNum + 1;
+        a[lenF-1] = a[0] = 1;
+        a[groupNum] = 1;
+        while(auxNum){
+            a[groupNum+1+i] = a[groupNum-1-i] = auxNum & 1;
+            auxNum = auxNum >> 1;
+            ++i;
+        }
+    }
+    
+    for(int i = 0; i < lenF; ++i){
+        num += (1 << i) * a[i];
+    }
+    return num;
+}
+
+int getNthNumber(int num){
+    int groupNum = 0;
+    int groupOffset = 0;
+    int countUptoGroup = 0;
+    int countTemp = 1;
+    int op = 0;
+    int auxNum = 0;
+    while(countTemp < num){
+        ++groupNum;
+        countUptoGroup = countTemp;
+        countTemp += 3 * (1 << (groupNum - 1));
+    }
+    groupOffset = num - countUptoGroup - 1;
+    if((groupOffset + 1) <= (1 << (groupNum - 1))){
+        op = 2;
+    } else{
+        if(((groupOffset + 1) - (1 << (groupNum - 1))) % 2){
+            op = 0;
+        } else{
+            op = 1;
+        }
+        auxNum = ((groupOffset) - (1 << (groupNum - 1))) / 2;
+        return createNthNumber(groupNum, auxNum, op);
+    }
+}
+
+int main(){
+    int num = 0;
+    std::cin >> num;
+    std::cout << getNthNumber(num) << std::endl;
+    return 0;
+}
